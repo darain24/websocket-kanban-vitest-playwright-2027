@@ -5,6 +5,7 @@ import {
   BarChart,
   CartesianGrid,
   Legend,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -207,26 +208,23 @@ function KanbanBoard() {
         <p className="kanban-completion" data-testid="completion-percentage">
           <strong>Completion: {chartData.completion}%</strong> done
         </p>
-        <div className="kanban-chart-wrap">
-          <BarChart
-            width={600}
-            height={250}
-            data={chartData.counts}
-            aria-label="Task progress chart"
-          >
-            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis dataKey="status" tick={{ fill: "#64748b", fontSize: 12 }} />
-            <YAxis allowDecimals={false} tick={{ fill: "#64748b", fontSize: 12 }} />
-            <Tooltip
-              contentStyle={{
-                borderRadius: 8,
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-              }}
-            />
-            <Legend />
-            <Bar dataKey="count" fill="#6366f1" name="Tasks" radius={[4, 4, 0, 0]} />
-          </BarChart>
+        <div className="kanban-chart-wrap" aria-label="Task progress chart">
+          <ResponsiveContainer width="100%" height={280}>
+            <BarChart data={chartData.counts} margin={{ top: 8, right: 8, left: 8, bottom: 8 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+              <XAxis dataKey="status" tick={{ fill: "#64748b", fontSize: 12 }} />
+              <YAxis allowDecimals={false} tick={{ fill: "#64748b", fontSize: 12 }} />
+              <Tooltip
+                contentStyle={{
+                  borderRadius: 8,
+                  border: "1px solid #e2e8f0",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                }}
+              />
+              <Legend />
+              <Bar dataKey="count" fill="#6366f1" name="Tasks" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </section>
 

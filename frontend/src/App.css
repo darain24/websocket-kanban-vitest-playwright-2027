@@ -30,6 +30,7 @@ body {
   background: var(--bg-page);
   color: var(--text);
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 .App {
@@ -55,4 +56,34 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 1.5rem;
+}
+
+/* Responsive: tablet and below */
+@media (max-width: 768px) {
+  .App-header {
+    padding: 1rem 1rem;
+  }
+
+  .App-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .App-main {
+    padding: 1rem;
+  }
+}
+
+/* Responsive: mobile */
+@media (max-width: 480px) {
+  .App-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .App-header h1 {
+    font-size: 1.1rem;
+  }
+
+  .App-main {
+    padding: 0.75rem;
+  }
 }

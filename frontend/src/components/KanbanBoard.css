@@ -3,6 +3,7 @@
   --col-todo: #3b82f6;
   --col-progress: #f59e0b;
   --col-done: #22c55e;
+  max-width: 100%;
 }
 
 .kanban-board > .board-title {
@@ -67,6 +68,7 @@
 
 .kanban-chart-wrap {
   max-width: 100%;
+  min-height: 200px;
 }
 
 /* Create task form */
@@ -165,6 +167,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.5rem 1rem;
+  min-height: 44px;
   font-size: 0.9rem;
   font-weight: 500;
   font-family: inherit;
@@ -318,6 +321,8 @@
   font-weight: 600;
   color: var(--text);
   line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .task-description {
@@ -416,6 +421,7 @@
   margin-top: 0.75rem;
 }
 
+/* Tablet: single column form, stacked columns */
 @media (max-width: 900px) {
   .form-grid {
     grid-template-columns: 1fr;
@@ -423,5 +429,162 @@
 
   .kanban-columns {
     flex-direction: column;
+    min-height: 0;
+    gap: 1.25rem;
+  }
+
+  .kanban-column {
+    min-width: 100%;
+  }
+
+  .column-empty {
+    min-height: 120px;
+  }
+
+  .kanban-chart-wrap {
+    min-height: 240px;
+  }
+}
+
+/* Small tablet / large phone */
+@media (max-width: 640px) {
+  .kanban-board > .board-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .kanban-progress,
+  .new-task-form {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .kanban-progress h3,
+  .new-task-form h3 {
+    font-size: 0.95rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group textarea,
+  .form-group select {
+    padding: 0.6rem 0.75rem;
+    font-size: 16px; /* prevents zoom on focus on iOS */
+  }
+
+  .kanban-task {
+    padding: 0.75rem;
+  }
+
+  .task-actions {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .task-actions .btn {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .kanban-chart-wrap {
+    min-height: 220px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .kanban-board > .board-title {
+    font-size: 1rem;
+  }
+
+  .kanban-alert {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .kanban-alert--error code {
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  .kanban-progress,
+  .new-task-form {
+    padding: 0.85rem;
+    margin-bottom: 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .kanban-completion {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .kanban-chart-wrap {
+    min-height: 200px;
+  }
+
+  .column-header {
+    margin: -0.85rem -0.85rem 0.6rem;
+    padding: 0.6rem 0.85rem 0;
+  }
+
+  .column-header h3 {
+    font-size: 0.9rem;
+  }
+
+  .kanban-column {
+    padding: 0.85rem;
+  }
+
+  .column-empty {
+    min-height: 100px;
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+
+  .task-title {
+    font-size: 0.9rem;
+  }
+
+  .task-description {
+    font-size: 0.8rem;
+  }
+
+  .task-meta {
+    gap: 0.4rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.18rem 0.4rem;
+  }
+
+  .task-actions {
+    flex-direction: column;
+    padding-top: 0.6rem;
+  }
+
+  .task-actions .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .new-task-form .btn-primary {
+    width: 100%;
+  }
+}
+
+/* Prevent horizontal overflow on very small screens */
+@media (max-width: 360px) {
+  .App-main {
+    padding: 0.5rem;
+  }
+
+  .kanban-progress,
+  .new-task-form {
+    padding: 0.65rem;
+  }
+
+  .kanban-column {
+    padding: 0.65rem;
   }
 }
